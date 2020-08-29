@@ -1,0 +1,60 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct element{
+	char name[20];
+	double atomic_weight;
+	char atomic_symbol[3];
+};
+
+struct list{
+	//declartion of the linked list 
+	struct element data;
+	struct list* next;
+};
+
+struct list* create_list(struct element data){
+	//Function to create a new item of the linked list 
+   struct list *head = malloc(sizeof(struct list));
+   head->data = data;
+   head->next = NULL;
+   return head;
+}
+
+struct list* add_to_list(struct element data,struct list *root){
+   //Function to add a new item at the end of the linked list 
+   if (root == NULL){
+   	root = create_list(data);
+   	return root;
+   }
+   struct list *p = root;
+   while(p->next!=NULL)
+     p = p->next;
+   p->next = create_list(data);
+   return root;
+}
+
+void print_list(struct list *root){
+	//Function to print the items of the linked list 
+	struct list *p;
+	p = root;
+	while(p!=NULL){
+	  printf("%-10s\t%.3lf\t\t%s\n",p->data.name,p->data.atomic_weight,p->data.atomic_symbol);
+	  p = p->next;
+	}
+}
+
+int main(){
+ struct element element;
+ struct list* head = NULL;
+ int i;
+ printf("Enter the details of first ten elements of the periodic table\n");
+ printf("Name\tAtomic weight\tAtomic Symbol\n");
+ for (i=0;i<10;i++){
+ 	//Input the elements of the linked list 
+ 	scanf("%s %lf %s1*[\n]",element.name,&element.atomic_weight,element.atomic_symbol);
+ 	head = add_to_list(element,head);
+ 	}
+ printf("\n\nName\tAtomic weight\tAtomic Symbol\n");
+ print_list(head);
+}
