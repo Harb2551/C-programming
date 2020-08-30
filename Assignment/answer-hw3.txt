@@ -1,0 +1,7 @@
+12
+14
+22
+65
+78
+The average is 38.200000
+The greatest element is 78
