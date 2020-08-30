@@ -1,3 +1,1 @@
 4 9 11 4 7 5 9 8 15
-The sum of the rationals is 8588/3465
-The average of the rationals is 2147/3465
