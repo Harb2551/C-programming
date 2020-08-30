@@ -7,6 +7,7 @@ struct rational{
 };
 
 struct rational add_rational(struct rational a,struct rational b){
+    // function to add the rational numbers
 	struct rational c;
 	c.num = (a.num*b.den) + (b.num*a.den);
 	c.den = (a.den*b.den);
@@ -14,6 +15,7 @@ struct rational add_rational(struct rational a,struct rational b){
 }
 
 struct rational sub_rational(struct rational a,struct rational b){
+    // function to subtract the rational numbers
 	struct rational c;
 	c.num = (a.num*b.den) - (b.num*a.den);
 	c.den = (a.den*b.den);
@@ -21,6 +23,7 @@ struct rational sub_rational(struct rational a,struct rational b){
 }
 
 struct rational mul_rational(struct rational a,struct rational b){
+    // function to multiply the rational numbers
 	struct rational c;
 	c.num = a.num*b.num;
 	c.den = a.den*b.den;
@@ -28,6 +31,7 @@ struct rational mul_rational(struct rational a,struct rational b){
 }
 
 struct rational div_rational(struct rational a,struct rational b){
+    // function to divide the rational numbers
 	struct rational c;
 	c.num = a.num*b.den;
 	c.den = a.den*b.num;
@@ -35,7 +39,8 @@ struct rational div_rational(struct rational a,struct rational b){
 }
 
 struct rational reduce_rational(struct rational a){
-	int i;
+  // function to reduce the rational number to its lowest term
+  int i;
   if (a.num > a.den){
 	for (i=2;i<sqrt(a.den);i++){
        if (a.den%i == 0){
@@ -67,7 +72,7 @@ int main(){
 	FILE *fp;
 	struct rational data[100];
 	int size,i;
-	fp = fopen("answer.txt","r+");
+	fp = fopen("answer.txt","r+"); // reading from the file answer.txt(if you don't have create one)
 	fscanf(fp,"%d",&size);
     for (i=0;i<size;i++){
     	fscanf(fp,"%d %d",&data[i].num,&data[i].den);
